@@ -1,0 +1,53 @@
+schema: spec-driven
+
+context: |
+  Proyecto: Tech Video Generator.
+  Aplicación local para Windows que crea diagramas técnicos, animaciones explicativas y recursos visuales para documentales tecnológicos.
+  El producto complementa editores externos como DaVinci Resolve; no pretende reemplazarlos.
+  Stack inicial: React, TypeScript, Vite, Remotion y ASP.NET Core con C#.
+  El renderizado es local y utiliza Remotion y FFmpeg.
+  Los proyectos y la biblioteca de recursos son locales y portables.
+  La arquitectura debe mantener el modelo de escenas independiente del editor y del motor de renderizado.
+  Las integraciones de IA deben permitir proveedores intercambiables.
+  Las credenciales de IA se administran exclusivamente desde el backend local.
+  Las operaciones con proveedores de pago requieren autorización del usuario.
+  El MVP prioriza crear, editar, guardar, abrir, previsualizar y exportar escenas manualmente.
+  La integración de IA y las capacidades avanzadas se incorporan incrementalmente.
+  No introducir microservicios ni infraestructura innecesaria.
+  Escribir los artefactos OpenSpec en español. Usar inglés para código e identificadores.
+
+rules:
+  proposal:
+    - Explicar el problema y el valor para el producto.
+    - Definir claramente el alcance y lo que queda fuera.
+    - Priorizar el MVP y evitar funcionalidades especulativas.
+
+  specs:
+    - Escribir requisitos observables y escenarios verificables.
+    - Separar el comportamiento actual de las funcionalidades futuras.
+    - Evitar imponer detalles de implementación cuando no sean necesarios.
+
+  design:
+    - Respetar docs/ARCHITECTURE.md y justificar cualquier desviación.
+    - Preferir soluciones simples y locales.
+    - Explicar dependencias, riesgos e impacto en los datos del usuario.
+
+  tasks:
+    - Dividir el trabajo en tareas pequeñas y verificables.
+    - Incluir pruebas y criterios de aceptación.
+    - Identificar dependencias entre tareas.
+    - No incluir tareas fuera del alcance aprobado.
+
+operations:
+  apply:
+    guidance:
+      - Implementar únicamente tareas aprobadas.
+      - No ampliar el alcance sin autorización.
+      - Ejecutar las pruebas relevantes y reportar sus resultados.
+      - Mantener la documentación sincronizada cuando cambie el comportamiento.
+
+  archive:
+    guidance:
+      - Verificar que los cambios estén implementados y revisados.
+      - Sincronizar las especificaciones correspondientes.
+      - Resumir el resultado y las tareas pendientes.

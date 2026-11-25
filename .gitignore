@@ -1,0 +1,27 @@
+# Local tools and package caches
+.tools/
+.npm-cache/
+
+# JavaScript dependencies and outputs
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+
+# .NET outputs
+**/bin/
+**/obj/
+.vs/
+*.user
+
+# Test outputs
+playwright-report/
+test-results/
+**/playwright-report/
+**/test-results/
+
+# Local environment overrides
+.env
+.env.local
+**/.env
+**/.env.local

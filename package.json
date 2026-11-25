@@ -1,0 +1,27 @@
+{
+  "name": "tech-video-generator",
+  "private": true,
+  "workspaces": [
+    "src/web",
+    "src/renderer"
+  ],
+  "engines": {
+    "node": "24.22.3",
+    "npm": "11.19.1"
+  },
+  "packageManager": "npm@11.19.1",
+  "scripts": {
+    "dev:api": "dotnet watch run --project src/api/TechVideoGenerator.Api.csproj --launch-profile Development",
+    "dev:web": "npm run dev --workspace @tech-video-generator/web",
+    "start:integrated": "dotnet run --project src/api/TechVideoGenerator.Api.csproj --launch-profile Integrated",
+    "build:web": "npm run build --workspace @tech-video-generator/web",
+    "bundle:renderer": "npm run bundle --workspace @tech-video-generator/renderer",
+    "build": "npm run build:web && npm run bundle:renderer",
+    "test:api": "dotnet test tests/integration/TechVideoGenerator.Api.Tests/TechVideoGenerator.Api.Tests.csproj",
+    "test:browser": "npm run build:web && dotnet build src/api/TechVideoGenerator.Api.csproj && playwright test && playwright test --config playwright.integrated.config.ts",
+    "check": "npm run test:api && npm run bundle:renderer && npm run test:browser"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1"
+  }
+}
