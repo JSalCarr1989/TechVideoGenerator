@@ -94,3 +94,23 @@ The MVP is the priority.
 Do not implement advanced features simply because they appear in the product vision. Check whether they belong to the current MVP or a future iteration.
 
 When requirements are ambiguous, explain the interpretation and ask only when the ambiguity materially affects implementation.
+
+Mandatory Branch Protection for Build
+
+Before performing any implementation work, Build MUST execute "git branch --show-current" and verify the current branch.
+
+Rules:
+
+1. Build MUST NEVER modify application code, dependencies, runtime configuration, or implementation files while on "main".
+2. If the current branch is "main", Build MUST:
+   - Verify that the working tree is clean.
+   - Update local "main" with the latest "origin/main".
+   - Create and switch to a new branch named "feature/<openspec-change-name>".
+   - Verify that the active branch is the expected feature branch.
+3. If the working tree is not clean, Build MUST STOP and report the uncommitted changes. It must not discard, overwrite, stash, or commit them without user authorization.
+4. If branch creation or switching fails, Build MUST STOP without modifying implementation files.
+5. Before every implementation session, Build MUST verify that it is still on the expected feature branch.
+6. All implementation commits MUST belong to the feature branch. Direct commits and pushes to "main" are prohibited.
+7. Build MUST NOT bypass GitHub branch protection rules.
+
+**This rule is mandatory and takes precedence over implementation instructions that would otherwise modify files on "main".
